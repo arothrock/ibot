@@ -1,0 +1,15 @@
+{
+  "name": "ibot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Slack Bot",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aaron Rothrock",
+  "license": "",
+  "dependencies": {
+    "botkit": "^0.2.2"
+  }
+}

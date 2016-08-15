@@ -1,0 +1,7 @@
+name: iBot
+author: Applos Technologies
+email: lyte@applos.com
+description: ibot Description goes here.
+slackscopes:
+  - bot
+  - commands
