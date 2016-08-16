@@ -1,7 +1,6 @@
 {
   "name": "ibot",
   "version": "1.0.0",
-  "private": true,
   "description": "Slack Bot",
   "main": "server.js",
   "scripts": {
