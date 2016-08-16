@@ -13,7 +13,31 @@ var slapp = Slapp({
 var app = slapp.attachToExpress(express())
 
 slapp.message('hi (.*)', ['direct_message'], (msg, text, match1) => {
-  msg.say('How are you?').route('handleHi', { what: match1 })
+  msg.say({
+    text: 'How are you?',
+    attachments: [
+      {
+        text: '',
+        callback_id: 'how_are_you',
+        action: [
+          {
+            name: 'answer',
+            text: ':thumbsup:',
+            type: 'button',
+            value: 'up',
+            style: 'default'
+          },
+          {
+            name: 'answer',
+            text: ':thumbsdown:',
+            type: 'button',
+            value: 'down',
+            style: 'default'
+          }
+        ]
+      }
+    ]
+  }).route('handleHi', { what: match1 })
 })
 
 slapp.route('handleHi', (msg, state) => {
