@@ -5,3 +5,4 @@ description: ibot Description goes here.
 slackscopes:
   - bot
   - commands
+  - identify
