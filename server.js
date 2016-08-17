@@ -25,11 +25,11 @@ var app = slapp.attachToExpress(express())
 
 slapp.message('go', ['direct_message'], (msg, text, match1) => {
 
-  var usersID = message.user;
-  var teamID = message.team;
+  var usersID = msg.user;
+  var teamID = msg.team;
 
   console.log(usersID);
-  
+
   msg.say({
     text: 'How are you?',
     attachments: [
