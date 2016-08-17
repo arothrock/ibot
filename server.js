@@ -10,7 +10,16 @@ var slapp = Slapp({
   context: BeepBoopContext()
 })
 
+/*var Botkit = require('botkit');
+var controller = Botkit.slackbot({
+	interactive_replies: false,
+	debug: false,
+});
+
+*/
 var app = slapp.attachToExpress(express())
+
+
 
 slapp.message('hi (.*)', ['direct_message'], (msg, text, match1) => {
   msg.say({
@@ -19,7 +28,7 @@ slapp.message('hi (.*)', ['direct_message'], (msg, text, match1) => {
       {
         text: '',
         callback_id: 'how_are_you',
-        action: [
+        actions: [
           {
             name: 'answer',
             text: ':thumbsup:',
@@ -40,9 +49,22 @@ slapp.message('hi (.*)', ['direct_message'], (msg, text, match1) => {
   }).route('handleHi', { what: match1 })
 })
 
+
+slapp.action('how_are_you', 'answer', (msg, val) => {
+	msg.respond('You are ' + val)
+})
+
+/*
 slapp.route('handleHi', (msg, state) => {
+  if (msg.type != 'action') {
+    msg.say('You must choose a button!').route('handleHi', state)
+    return
+  }
   msg.say(':smile: ' + state.what)
 })
+*/
+
+
 
 app.get('/', function (req, res) {
   res.send('Hello')
