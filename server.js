@@ -17,51 +17,19 @@ var controller = Botkit.slackbot({
 	debug: false,
 });
 
-var bot = controller.spawn({
-    token: slackToken
-}).startRTM();
-
-
-// just a simple way to make sure we don't
-// connect to the RTM twice for the same team
-var _bots = {};
-function trackBot(bot) {
-  _bots[bot.config.token] = bot;
-}
-
-
 
 var app = slapp.attachToExpress(express())
 
 
-//Asks a random question
-controller.hears(['go'], 'direct_message,direct_mention,mention', function(bot, message) {
-
-	//ask a random question from the database
-	//bot.startConversation(message, askrandom);
-
-	//usersID = bot.api.users.identity({members: message.id});
-	var usersID = message.user;
-	var teamID = message.team;
-	var catID = 0;
-	var qcount = 0;
-
-	console.log("Hello, from BotKit.");
-/*
-	bot.startPrivateConversation({ user: usersID },function(err,dm) {
-		dm.say("Hi! To stop, say: `stop`. To skip a question, say: `skip`.");
-	});
-
-	requestQuestion(catID, usersID, teamID, qcount);
-*/
-	//connectDB(usersID, teamID, subject);
-	//console.log("The team id is: "+teamID);
-	//console.log(message);
-
-});
 
 
-slapp.message('hi (.*)', ['direct_message'], (msg, text, match1) => {
+slapp.message('go', ['direct_message'], (msg, text, match1) => {
+
+  var usersID = message.user;
+  var teamID = message.team;
+
+  console.log(usersID);
+  
   msg.say({
     text: 'How are you?',
     attachments: [
