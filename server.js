@@ -10,15 +10,41 @@ var slapp = Slapp({
   context: BeepBoopContext()
 })
 
-/*var Botkit = require('botkit');
+var Botkit = require('botkit');
 var controller = Botkit.slackbot({
 	interactive_replies: false,
 	debug: false,
 });
 
-*/
+
 var app = slapp.attachToExpress(express())
 
+
+//Asks a random question
+controller.hears(['go'], 'direct_message,direct_mention,mention', function(bot, message) {
+
+	//ask a random question from the database
+	//bot.startConversation(message, askrandom);
+
+	//usersID = bot.api.users.identity({members: message.id});
+	var usersID = message.user;
+	var teamID = message.team;
+	var catID = 0;
+	var qcount = 0;
+
+	console.log("Hello, from BotKit.");
+/*
+	bot.startPrivateConversation({ user: usersID },function(err,dm) {
+		dm.say("Hi! To stop, say: `stop`. To skip a question, say: `skip`.");
+	});
+
+	requestQuestion(catID, usersID, teamID, qcount);
+*/
+	//connectDB(usersID, teamID, subject);
+	//console.log("The team id is: "+teamID);
+	//console.log(message);
+
+});
 
 
 slapp.message('hi (.*)', ['direct_message'], (msg, text, match1) => {
