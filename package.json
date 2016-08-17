@@ -13,7 +13,8 @@
     "nodemon": "^1.10.0",
     "slapp": "^1.0.5",
     "slapp-context-beepboop": "^1.0.0",
-    "slapp-convo-beepboop": "^1.0.0"
+    "slapp-convo-beepboop": "^1.0.0",
+    "botkit": "^0.2.2"
   },
   "devDependencies": {
     "nodemon": "^1.10.0"
