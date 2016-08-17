@@ -1,6 +1,7 @@
 'use strict'
 const express = require('express')
 const Slapp = require('slapp')
+const Botkit = require('botkit')
 const BeepBoopConvoStore = require('slapp-convo-beepboop')
 const BeepBoopContext = require('slapp-context-beepboop')
 if (!process.env.PORT) throw Error('PORT missing but required')
@@ -11,7 +12,6 @@ var slapp = Slapp({
   context: BeepBoopContext()
 })
 
-var Botkit = require('botkit');
 var controller = Botkit.slackbot({
 	interactive_replies: false,
 	debug: false,
