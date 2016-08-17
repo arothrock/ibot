@@ -4,6 +4,7 @@ const Slapp = require('slapp')
 const BeepBoopConvoStore = require('slapp-convo-beepboop')
 const BeepBoopContext = require('slapp-context-beepboop')
 if (!process.env.PORT) throw Error('PORT missing but required')
+var slackToken = process.env.SLACK_TOKEN;
 
 var slapp = Slapp({
   convo_store: BeepBoopConvoStore(),
@@ -15,6 +16,19 @@ var controller = Botkit.slackbot({
 	interactive_replies: false,
 	debug: false,
 });
+
+var bot = controller.spawn({
+    token: slackToken
+}).startRTM();
+
+
+// just a simple way to make sure we don't
+// connect to the RTM twice for the same team
+var _bots = {};
+function trackBot(bot) {
+  _bots[bot.config.token] = bot;
+}
+
 
 
 var app = slapp.attachToExpress(express())
